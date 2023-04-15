@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Data } from '../models/data.model';
-import { Support } from '../models/support.model';
+import { User } from '../models/user.model';
+
 @Injectable({
     providedIn: 'root'
 })
 export class UsersService {
-    url = 'https://reqres.in/api/users/2'
+
+    url = 'https://reqres.in/api/users'
 
     constructor(private http: HttpClient) { }
 
-    create(data: Data, support: Support) {
-        return this.http.post(this.url, Data);
+    create(user: User) {
+        return this.http.post(this.url, user)
     }
 
     getAll() {
@@ -19,14 +20,14 @@ export class UsersService {
     }
 
     getOne(id: number) {
-        return this.http.get(`${this.url} / ${id}}`);
+        return this.http.get('${this.url}/${id}');
     }
 
-    update(data: Data) {
-        return this.http.put(`${this.url} / ${data.id}`, data);
+    update(user: User) {
+        return this.http.put('${this.url}/$(cliente.id)', user);
     }
 
-    delete(id: number) {
-        return this.http.delete(`${this.url}/${id}`);
+    delete() {
+        return this.http.delete('${this.url}/${id}');
     }
 }
