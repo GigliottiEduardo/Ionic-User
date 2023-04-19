@@ -1,5 +1,5 @@
 {
-  "name": "reqres",
+  "name": "users-app",
   "integrations": {
     "capacitor": {}
   },
