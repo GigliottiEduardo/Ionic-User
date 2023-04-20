@@ -1,7 +1,5 @@
 {
-  "name": "users-app",
-  "integrations": {
-    "capacitor": {}
-  },
+  "name": "avaliacao-ionic",
+  "integrations": {},
   "type": "angular"
 }
