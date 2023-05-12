@@ -1,5 +1,7 @@
 {
-  "name": "avaliacao-ionic",
-  "integrations": {},
+  "name": "estoque-app",
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
