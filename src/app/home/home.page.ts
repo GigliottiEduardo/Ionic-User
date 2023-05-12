@@ -1,41 +1,34 @@
 import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { ClientesService } from '../services/clientes.service';
-import { Cliente } from '../models/Cliente.model';
-import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { Resposta } from '../models/Resposta.model';
+import { UserCreateUpdate } from '../models/UserCreateUpdate.model';
+import { UsuariosService } from '../services/usuarios.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, RouterLink],
+  imports: [IonicModule],
 })
 export class HomePage {
-
-  listaClientes: Cliente[] = [];
-
-  constructor(private clientesService: ClientesService, private router: Router) {
-    
-  }
-
-  ionViewWillEnter(){
-    this.buscarClientes();
-  }
-
-  buscarClientes() {
-    this.clientesService.getAll().subscribe(dados => {
-        this.listaClientes = dados;
+  constructor(private usuariosService: UsuariosService) { }
+  resposta?: Resposta;
+  buscarUsuarios() {
+    this.usuariosService.getUsers().subscribe(dados => {
+      console.log(dados);
+      this.resposta = dados as Resposta;
     });
   }
 
-  alterarCliente(id: number){
-    this.router.navigateByUrl(`/alterar-cliente/${id}`);
+  criarUsuario(){
+    let user : UserCreateUpdate = {
+      name : "Vinicius",
+      job: "Espetador"
+    }
 
-  }
-
-  excluirCliente(id: number){
-    
+    this.usuariosService.create(user).subscribe(resposta => {
+      console.log(resposta);
+    });
   }
 }

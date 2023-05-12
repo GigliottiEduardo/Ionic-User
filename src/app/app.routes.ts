@@ -7,28 +7,20 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'lista-produtos',
+    redirectTo: 'lista-usuarios',
     pathMatch: 'full',
   },
   {
-    path: 'create-cliente',
-    loadComponent: () => import('./create-cliente/create-cliente.page').then( m => m.CreateClientePage)
+    path: 'lista-usuarios',
+    loadComponent: () => import('./lista-usuarios/lista-usuarios.page').then( m => m.ListaUsuariosPage)
   },
   {
-    path: 'alterar-cliente/:id',
-    loadComponent: () => import('./alterar-cliente/alterar-cliente.page').then( m => m.AlterarClientePage)
+    path: 'criar-usuario',
+    loadComponent: () => import('./criar-usuario/criar-usuario.page').then( m => m.CriarUsuarioPage)
   },
   {
-    path: 'lista-produtos',
-    loadComponent: () => import('./lista-produtos/lista-produtos.page').then( m => m.ListaProdutosPage)
-  },
-  {
-    path: 'create-produto',
-    loadComponent: () => import('./create-produto/create-produto.page').then( m => m.CreateProdutoPage)
-  },
-  {
-    path: 'alterar-produto/:id',
-    loadComponent: () => import('./alterar-produto/alterar-produto.page').then( m => m.AlterarProdutoPage)
+    path: 'editar-usuario/:id',
+    loadComponent: () => import('./editar-usuario/editar-usuario.page').then( m => m.EditarUsuarioPage)
   },
 
 ];
