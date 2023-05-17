@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { UsuariosService } from '../services/usuarios.service';
-import { UserCreateUpdate } from '../models/UserCreateUpdate.model';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-criar-usuario',
@@ -15,26 +15,26 @@ import { Router } from '@angular/router';
 })
 export class CriarUsuarioPage implements OnInit {
 
-  nome : string = "";
-  job : string = "";
-  constructor(private usuariosServices: UsuariosService,private router : Router) { }
+  first_name = '';
+  last_name = '';
+  email = '';
+  avatar = '';
+  
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
   }
 
-  salvar(){
-    if(this.nome != "" && this.job != ""){
-      let user : UserCreateUpdate = {
-        name: this.nome,
-        job: this.job
+    salvar(){
+      const usuario : User = {
+        first_name: this.first_name,
+        last_name: this.last_name,
+        email: this.email,
+        avatar: this.avatar
       }
-
-      this.usuariosServices.create(user).subscribe(resposta => {
-        alert("Usuario Criado");
-        console.log(resposta);
-        this.router.navigate(['/lista-usuarios']);
-      })
+        this.userService.create(usuario).subscribe(dados => {
+          alert("Usuario inserido com sucesso, id: " + dados.id)
+          this.router.navigateByUrl('/home');
+        })
     }
-  }
-
-}
+} 

@@ -7,20 +7,16 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'lista-usuarios',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
-    path: 'lista-usuarios',
-    loadComponent: () => import('./lista-usuarios/lista-usuarios.page').then( m => m.ListaUsuariosPage)
+    path: 'alterar-usuario/:id',
+    loadComponent: () => import('./alterar-usuario/alterar-usuario.page').then( m => m.AlterarUsuarioPage)
   },
   {
     path: 'criar-usuario',
     loadComponent: () => import('./criar-usuario/criar-usuario.page').then( m => m.CriarUsuarioPage)
-  },
-  {
-    path: 'editar-usuario/:id',
-    loadComponent: () => import('./editar-usuario/editar-usuario.page').then( m => m.EditarUsuarioPage)
   },
 
 ];
